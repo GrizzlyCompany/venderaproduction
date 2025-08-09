@@ -1,0 +1,370 @@
+
+{
+  "header": {
+    "properties": "Properties",
+    "favorites": "Favorites",
+    "addProperty": "Add Property",
+    "home": "Home",
+    "messages": "Messages",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "Sell fast. Buy happy.",
+    "subtitle": "Discover a curated selection of the finest properties. Your new beginning awaits.",
+    "featuredListings": "Featured Listings",
+    "noProperties": "No properties match your current filters."
+  },
+  "search": {
+    "location": "Location",
+    "allLocations": "All Locations",
+    "propertyType": "Property Type",
+    "allTypes": "All Types",
+    "priceRange": "Price Range",
+    "button": "Search",
+    "placeholder": {
+      "users": "Search users by name...",
+      "properties": "Search for properties..."
+    },
+    "enterQuery": "Please enter a name to search.",
+    "resultsTitle": "Search Results",
+    "resultsFor": "Showing results for:",
+    "noUsersFound": "No Users Found",
+    "noUsersMatch": "No users match your search query. Try a different name."
+  },
+  "footer": {
+    "about": "About Us",
+    "contact": "Contact",
+    "terms": "Terms of Service",
+    "follow": "Follow Us",
+    "copyright": "© {year} VENDRA. All rights reserved."
+  },
+  "userNav": {
+    "avatarAlt": "User avatar",
+    "profile": "Profile",
+    "logout": "Log out"
+  },
+  "login": {
+    "title": "Login",
+    "subtitle": "Enter your email below to login to your account.",
+    "password": "Password",
+    "button": "Login",
+    "noAccount": "Don't have an account?",
+    "toast": {
+      "error": {
+        "title": "Login Failed"
+      },
+      "success": {
+        "title": "Login Successful",
+        "description": "Welcome back!"
+      }
+    }
+  },
+  "signup": {
+    "title": "Sign Up",
+    "subtitle": "Enter your information to create an account",
+    "name": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "button": "Create an account",
+    "hasAccount": "Already have an account?",
+    "toast": {
+      "error": {
+        "title": "Sign Up Failed"
+      },
+      "success": {
+        "title": "Sign Up Successful",
+        "description": "Please check your email to verify your account."
+      }
+    }
+  },
+  "favorites": {
+    "title": "Your Favorite Properties",
+    "subtitle": "Here are the listings you've saved for later.",
+    "add": "Add to favorites",
+    "remove": "Remove from favorites",
+    "empty": {
+      "title": "No Favorites Yet",
+      "description": "Click the heart icon on any property to save it here.",
+      "button": "Browse Properties"
+    },
+    "toast": {
+      "added": {
+        "title": "Added to Favorites",
+        "description": "\"{title}\" has been saved."
+      },
+      "removed": {
+        "title": "Removed from Favorites",
+        "description": "\"{title}\" has been removed."
+      }
+    }
+  },
+  "messages": {
+    "title": "Your Conversations",
+    "subtitle": "Manage your messages with sellers.",
+    "allMessages": "All Messages",
+    "re": "Re:",
+    "empty": {
+      "title": "No Conversations Yet",
+      "description": "When you contact a seller, your conversations will appear here.",
+      "button": "Browse Properties"
+    },
+    "select": {
+      "title": "Select a conversation",
+      "description": "Choose a conversation from the list to see the messages."
+    },
+    "timestamp": {
+      "minutes": "{count}m ago",
+      "hours": "{count}h ago"
+    }
+  },
+  "chat": {
+    "title": "Chat with",
+    "titleProperty": "Chat about \"{title}\"",
+    "potentialBuyer": "Potential Buyer",
+    "error": "Sorry, I'm having trouble connecting right now. Please try again later.",
+    "placeholder": "Type your message..."
+  },
+  "notifications": {
+    "open": "Open messages",
+    "inbox": "Inbox",
+    "noMessages": "No new messages.",
+    "viewAll": "View all messages"
+  },
+  "profile": {
+    "sellerBadge": "Seller",
+    "ratings": "ratings",
+    "avatarAlt": "{name}'s Profile Picture",
+    "contactSeller": "Contact Seller",
+    "tabs": {
+      "listed": "Listed Properties",
+      "saved": "Saved Properties"
+    },
+    "empty": {
+      "listed": {
+        "own": "You haven't listed any properties yet.",
+        "other": "{name} hasn't listed any properties yet."
+      },
+      "saved": {
+        "description": "You haven't saved any properties yet.",
+        "button": "Browse Properties"
+      }
+    },
+    "edit": {
+      "title": "Edit Profile",
+      "description": "Make changes to your profile here. Click save when you're done.",
+      "name": "Full Name",
+      "save": "Save changes",
+      "toast": {
+        "success": {
+          "title": "Profile Updated",
+          "description": "Your changes have been saved."
+        },
+        "error": {
+          "title": "Update Failed",
+          "description": "Could not save your profile changes."
+        }
+      }
+    }
+  },
+  "property": {
+    "realtorInfo": "Realtor Information",
+    "certifiedRealtor": "Certified Realtor",
+    "details": "Property Details",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "beds": "beds",
+    "baths": "baths",
+    "sqft": "sqft",
+    "description": "Description",
+    "features": "Features",
+    "similar": "Similar Properties",
+    "types": {
+      "house": "House",
+      "apartment": "Apartment",
+      "condo": "Condo",
+      "villa": "Villa",
+      "lot": "Lot / Land"
+    }
+  },
+  "newProperty": {
+    "title": "List a New Property",
+    "subtitle": "Fill out the details below to put your property on the market.",
+    "form": {
+      "name": "Property Name",
+      "name_placeholder": "e.g., Luxurious Villa with Ocean View",
+      "price": "Price",
+      "location": "Location",
+      "address": "Full Address",
+      "type_placeholder": "Select a type",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Area (m²)",
+      "amenities_note": "Comma-separated list.",
+      "features": "Features",
+      "features_placeholder": "e.g., Ocean view, modern architecture",
+      "generating": "Generating...",
+      "generate_ai": "Generate with AI",
+      "description_placeholder": "Describe the property...",
+      "photos": "Property Photos",
+      "submit": "List Property"
+    },
+    "toast": {
+      "generated": {
+        "title": "Description Generated!",
+        "description": "The AI-powered description has been added."
+      },
+      "listed": {
+        "title": "Property Listed!",
+        "description": "Your property is now on the market."
+      },
+      "error": "Failed to generate description."
+    }
+  },
+  "userCard": {
+    "viewProfile": "View Profile"
+  },
+  "languageSwitcher": {
+    "label": "Change language"
+  },
+  "no_properties": "No properties found",
+  "no_favorites": "No favorites yet",
+  "no_ratings": "No ratings yet",
+  "user_not_found": "User not found",
+  "send_message": "Send Message",
+  "about": {
+    "title": "Reimagining Real Estate",
+    "subtitle": "We are a passionate team dedicated to creating a transparent, efficient, and enjoyable real estate experience for everyone.",
+    "missionTitle": "Our Mission",
+    "missionText": "Our mission is to empower buyers and sellers with the data, inspiration, and knowledge they need to make the best decisions. We believe that finding a home should be a joyful journey, and we're here to make that a reality, one property at a time.",
+    "teamTitle": "Meet the Team",
+    "teamSubtitle": "We are a diverse group of real estate agents, tech enthusiasts, and customer service experts united by a single goal: to serve you better.",
+    "whyTitle": "Why VENDRA?",
+    "whySubtitle": "Discover the advantages of using our platform for your next real estate venture.",
+    "why1_title": "Curated Listings",
+    "why1_text": "We feature a handpicked selection of quality properties to ensure you're browsing the best on the market.",
+    "why2_title": "Expert Agents",
+    "why2_text": "Connect with experienced and verified real estate professionals ready to assist you at every step.",
+    "why3_title": "Simplified Experience",
+    "why3_text": "Our user-friendly platform makes finding, buying, and selling properties easier than ever before."
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a question or a comment? Use the form below to send us a message, or contact us by email or phone.",
+    "form": {
+      "title": "Send us a Message",
+      "name": "Full Name",
+      "name_placeholder": "Your Name",
+      "email": "Email Address",
+      "email_placeholder": "your.email@example.com",
+      "message": "Message",
+      "message_placeholder": "Type your message here...",
+      "submit": "Send Message",
+      "validation": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "message": "Message must be at least 10 characters long."
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "address_title": "Our Office",
+      "address": "KM 17 Autop. Duarte",
+      "phone_title": "Phone",
+      "phone": "829-689-7550 (WhatsApp available)",
+      "email_title": "Email",
+      "email": "support@vendra.com"
+    },
+    "toast": {
+      "success": {
+        "title": "Message Sent!",
+        "description": "Thank you for contacting us. We'll get back to you shortly."
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "subtitle": "Please read these terms and conditions carefully before using Our Service.",
+    "lastUpdated": "Last updated: {date}",
+    "locale_code": "en-US",
+    "section1": {
+      "title": "1. Introduction",
+      "content": "Welcome to VENDRA. These Terms and Conditions govern your use of our website and services. By accessing or using the service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the service."
+    },
+    "section2": {
+      "title": "2. User Accounts",
+      "content": "When you create an account with us, you must provide us with information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service."
+    },
+    "section3": {
+      "title": "3. Property Listings",
+      "content": "VENDRA allows users to post property listings. You are responsible for the accuracy and legality of the content you post. We reserve the right to remove any listing that violates our policies or is deemed inappropriate, at our sole discretion."
+    },
+    "section4": {
+      "title": "4. Intellectual Property",
+      "content": "The Service and its original content, features, and functionality are and will remain the exclusive property of VENDRA and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries."
+    },
+    "section5": {
+      "title": "5. Limitation of Liability",
+      "content": "In no event shall VENDRA, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses."
+    },
+    "section6": {
+      "title": "6. Governing Law",
+      "content": "These Terms shall be governed and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law provisions."
+    }
+  },
+  "landing": {
+    "hero": {
+      "title": "Your Next Home Awaits",
+      "subtitle": "The premier marketplace for discovering, buying, and selling extraordinary properties. Let's find the door to your dreams.",
+      "cta_main": "Get Started",
+      "cta_secondary": "Learn More"
+    },
+    "featured": {
+      "title": "Featured Listings",
+      "subtitle": "Explore a handpicked selection of our finest properties, from luxury villas to modern city apartments."
+    },
+    "features": {
+        "feature1_title": "Advanced Search",
+        "feature1_desc": "Easily find your ideal property with our powerful and intuitive search filters.",
+        "feature2_title": "Quality Listings",
+        "feature2_desc": "We feature a curated selection of properties to ensure you browse the best on the market.",
+        "feature3_title": "Direct Messaging",
+        "feature3_desc": "Connect directly and securely with sellers and agents to get the information you need."
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "We're proud to have helped so many people find their perfect home. Here's what they think about VENDRA.",
+      "quote1": "VENDRA made finding our dream home an absolute breeze. The platform is so intuitive and the agents were incredibly helpful!",
+      "role1": "Happy Homebuyers",
+      "quote2": "As an agent, VENDRA is a game-changer. It connects me with serious buyers and streamlines the entire selling process.",
+      "role2": "Verified Seller",
+      "quote3": "I was overwhelmed with the process of selling my house, but VENDRA provided the tools and support I needed to get a great offer, fast.",
+      "role3": "First-time Seller"
+    },
+    "cta": {
+      "title": "Ready to Begin Your Journey?",
+      "subtitle": "Create an account today to save your favorite properties, connect with sellers, and unlock all the features of VENDRA.",
+      "button": "Sign Up for Free"
+    }
+  },
+  "mock": {
+    "property1_title": "Luxurious Villa in Beverly Hills",
+    "property1_description": "A stunning villa offering unparalleled luxury and privacy. Features a grand staircase, gourmet kitchen, and a breathtaking infinity pool with city views. Perfect for those who demand the very best in life.",
+    "property2_title": "Modern Downtown LA Apartment",
+    "property2_description": "Sleek, stylish, and modern apartment in the heart of downtown LA. Floor-to-ceiling windows offer incredible skyline views. Amenities include a rooftop lounge, fitness center, and 24/7 concierge.",
+    "property3_title": "Cozy Family Home in Santa Monica",
+    "property3_description": "Charming family home just blocks from the beach. This house boasts a beautiful backyard with a garden, a spacious living room with a fireplace, and a recently renovated kitchen. Ideal for family living.",
+    "property4_title": "Chic West Hollywood Condo",
+    "property4_description": "A trendy condo in a vibrant neighborhood, perfect for a young professional. Open-concept design with modern finishes and a private balcony. The building offers a pool, gym, and secure parking.",
+    "property5_title": "Sprawling Malibu Estate",
+    "property5_description": "An exquisite beachfront estate with private beach access. This designer masterpiece features panoramic ocean views from every room, a state-of-the-art home theater, and a tennis court.",
+    "property6_title": "Quaint Pasadena Craftsman",
+    "property6_description": "A beautiful craftsman-style home on a quiet, tree-lined street in Pasadena. Features original woodwork, a large front porch, and a serene backyard perfect for relaxing.",
+    "property7_title": "Penthouse with Panoramic Views",
+    "property7_description": "Live at the top of the world in this exclusive penthouse. Offering 360-degree views of the city, this residence is the epitome of urban luxury. Includes a private elevator, rooftop terrace, and premium services.",
+    "property8_title": "Beachfront Santa Monica Condo",
+    "property8_description": "Wake up to the sound of the waves in this luxurious beachfront condo. Direct access to the sand, a modern open-plan living area, and a large balcony to enjoy the sunset. A rare opportunity in a prime location.",
+    "user1_bio": "Top-tier real estate agent with over 15 years of experience in the luxury market. Let me help you find your dream home.",
+    "user2_bio": "Specializing in downtown residential and commercial properties. Let's find your next investment.",
+    "user3_bio": "Your go-to Santa Monica real estate expert. I live and breathe coastal properties.",
+    "user4_bio": "Connecting clients with the vibrant West Hollywood lifestyle. Your dream condo awaits."
+  }
+}

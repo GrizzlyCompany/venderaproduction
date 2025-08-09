@@ -1,0 +1,370 @@
+
+{
+  "header": {
+    "properties": "Propiedades",
+    "favorites": "Favoritos",
+    "addProperty": "Añadir Propiedad",
+    "home": "Inicio",
+    "messages": "Mensajes",
+    "profile": "Perfil"
+  },
+  "home": {
+    "title": "Vende rápido. Compra feliz.",
+    "subtitle": "Descubre una cuidada selección de las mejores propiedades. Tu nuevo comienzo te espera.",
+    "featuredListings": "Listados Destacados",
+    "noProperties": "Ninguna propiedad coincide con tus filtros actuales."
+  },
+  "search": {
+    "location": "Ubicación",
+    "allLocations": "Todas las Ubicaciones",
+    "propertyType": "Tipo de Propiedad",
+    "allTypes": "Todos los Tipos",
+    "priceRange": "Rango de Precios",
+    "button": "Buscar",
+    "placeholder": {
+      "users": "Buscar usuarios por nombre...",
+      "properties": "Buscar propiedades..."
+    },
+    "enterQuery": "Por favor, introduce un nombre para buscar.",
+    "resultsTitle": "Resultados de Búsqueda",
+    "resultsFor": "Mostrando resultados para:",
+    "noUsersFound": "No se encontraron usuarios",
+    "noUsersMatch": "Ningún usuario coincide con tu búsqueda. Intenta con un nombre diferente."
+  },
+  "footer": {
+    "about": "Sobre Nosotros",
+    "contact": "Contacto",
+    "terms": "Términos de Servicio",
+    "follow": "Síguenos",
+    "copyright": "© {year} VENDRA. Todos los derechos reservados."
+  },
+  "userNav": {
+    "avatarAlt": "Avatar del usuario",
+    "profile": "Perfil",
+    "logout": "Cerrar sesión"
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "subtitle": "Introduce tu correo para acceder a tu cuenta.",
+    "password": "Contraseña",
+    "button": "Iniciar Sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "toast": {
+      "error": {
+        "title": "Fallo de Inicio de Sesión"
+      },
+      "success": {
+        "title": "Inicio de Sesión Exitoso",
+        "description": "¡Bienvenido de nuevo!"
+      }
+    }
+  },
+  "signup": {
+    "title": "Registrarse",
+    "subtitle": "Introduce tu información para crear una cuenta",
+    "name": "Nombre Completo",
+    "confirmPassword": "Confirmar Contraseña",
+    "button": "Crear una cuenta",
+    "hasAccount": "¿Ya tienes una cuenta?",
+    "toast": {
+      "error": {
+        "title": "Fallo en el Registro"
+      },
+      "success": {
+        "title": "Registro Exitoso",
+        "description": "Por favor, revisa tu correo para verificar tu cuenta."
+      }
+    }
+  },
+  "favorites": {
+    "title": "Tus Propiedades Favoritas",
+    "subtitle": "Aquí están los listados que has guardado para más tarde.",
+    "add": "Añadir a favoritos",
+    "remove": "Quitar de favoritos",
+    "empty": {
+      "title": "Aún no tienes favoritos",
+      "description": "Haz clic en el icono del corazón en cualquier propiedad para guardarla aquí.",
+      "button": "Explorar Propiedades"
+    },
+    "toast": {
+      "added": {
+        "title": "Añadido a Favoritos",
+        "description": "\"{title}\" ha sido guardado."
+      },
+      "removed": {
+        "title": "Eliminado de Favoritos",
+        "description": "\"{title}\" ha sido eliminado."
+      }
+    }
+  },
+  "messages": {
+    "title": "Tus Conversaciones",
+    "subtitle": "Gestiona tus mensajes con los vendedores.",
+    "allMessages": "Todos los Mensajes",
+    "re": "Re:",
+    "empty": {
+      "title": "Aún no hay conversaciones",
+      "description": "Cuando contactes a un vendedor, tus conversaciones aparecerán aquí.",
+      "button": "Explorar Propiedades"
+    },
+    "select": {
+      "title": "Selecciona una conversación",
+      "description": "Elige una conversación de la lista para ver los mensajes."
+    },
+    "timestamp": {
+      "minutes": "hace {count}m",
+      "hours": "hace {count}h"
+    }
+  },
+  "chat": {
+    "title": "Chatear con",
+    "titleProperty": "Chatear sobre \"{title}\"",
+    "potentialBuyer": "Comprador Potencial",
+    "error": "Lo siento, estoy teniendo problemas para conectarme ahora mismo. Por favor, inténtalo de nuevo más tarde.",
+    "placeholder": "Escribe tu mensaje..."
+  },
+  "notifications": {
+    "open": "Abrir mensajes",
+    "inbox": "Bandeja de entrada",
+    "noMessages": "No hay mensajes nuevos.",
+    "viewAll": "Ver todos los mensajes"
+  },
+  "profile": {
+    "sellerBadge": "Vendedor",
+    "ratings": "valoraciones",
+    "avatarAlt": "Foto de perfil de {name}",
+    "contactSeller": "Contactar al Vendedor",
+    "tabs": {
+      "listed": "Propiedades Listadas",
+      "saved": "Propiedades Guardadas"
+    },
+    "empty": {
+      "listed": {
+        "own": "Aún no has listado ninguna propiedad.",
+        "other": "{name} aún no ha listado ninguna propiedad."
+      },
+      "saved": {
+        "description": "Aún no has guardado ninguna propiedad.",
+        "button": "Explorar Propiedades"
+      }
+    },
+    "edit": {
+      "title": "Editar Perfil",
+      "description": "Realiza cambios en tu perfil aquí. Haz clic en guardar cuando hayas terminado.",
+      "name": "Nombre Completo",
+      "save": "Guardar cambios",
+      "toast": {
+        "success": {
+          "title": "Perfil Actualizado",
+          "description": "Tus cambios han sido guardados."
+        },
+        "error": {
+          "title": "Error al Actualizar",
+          "description": "No se pudieron guardar los cambios de tu perfil."
+        }
+      }
+    }
+  },
+  "property": {
+    "realtorInfo": "Información del Agente",
+    "certifiedRealtor": "Agente Certificado",
+    "details": "Detalles de la Propiedad",
+    "bedrooms": "Dormitorios",
+    "bathrooms": "Baños",
+    "beds": "habs",
+    "baths": "baños",
+    "sqft": "m²",
+    "description": "Descripción",
+    "features": "Características",
+    "similar": "Propiedades Similares",
+    "types": {
+      "house": "Casa",
+      "apartment": "Apartamento",
+      "condo": "Condominio",
+      "villa": "Villa",
+      "lot": "Solar / Terreno"
+    }
+  },
+  "newProperty": {
+    "title": "Listar una Nueva Propiedad",
+    "subtitle": "Rellena los detalles a continuación para poner tu propiedad en el mercado.",
+    "form": {
+      "name": "Nombre de la Propiedad",
+      "name_placeholder": "Ej: Villa de lujo con vista al mar",
+      "price": "Precio",
+      "location": "Ubicación",
+      "address": "Dirección Completa",
+      "type_placeholder": "Selecciona un tipo",
+      "bedrooms": "Dormitorios",
+      "bathrooms": "Baños",
+      "area": "Área (m²)",
+      "amenities_note": "Lista separada por comas.",
+      "features": "Características",
+      "features_placeholder": "Ej: Vista al mar, arquitectura moderna",
+      "generating": "Generando...",
+      "generate_ai": "Generar con IA",
+      "description_placeholder": "Describe la propiedad...",
+      "photos": "Fotos de la Propiedad",
+      "submit": "Listar Propiedad"
+    },
+    "toast": {
+      "generated": {
+        "title": "¡Descripción Generada!",
+        "description": "La descripción generada por IA ha sido añadida."
+      },
+      "listed": {
+        "title": "¡Propiedad Listada!",
+        "description": "Tu propiedad ya está en el mercado."
+      },
+      "error": "No se pudo generar la descripción."
+    }
+  },
+  "userCard": {
+    "viewProfile": "Ver Perfil"
+  },
+  "languageSwitcher": {
+    "label": "Cambiar idioma"
+  },
+  "no_properties": "No se encontraron propiedades",
+  "no_favorites": "Aún no hay favoritos",
+  "no_ratings": "Aún no hay valoraciones",
+  "user_not_found": "Usuario no encontrado",
+  "send_message": "Enviar Mensaje",
+  "about": {
+    "title": "Reimaginando los Bienes Raíces",
+    "subtitle": "Somos un equipo apasionado dedicado a crear una experiencia inmobiliaria transparente, eficiente y agradable para todos.",
+    "missionTitle": "Nuestra Misión",
+    "missionText": "Nuestra misión es empoderar a compradores y vendedores con los datos, la inspiración y el conocimiento que necesitan para tomar las mejores decisiones. Creemos que encontrar un hogar debe ser un viaje alegre, y estamos aquí para hacerlo realidad, una propiedad a la vez.",
+    "teamTitle": "Conoce al Equipo",
+    "teamSubtitle": "Somos un grupo diverso de agentes inmobiliarios, entusiastas de la tecnología y expertos en servicio al cliente unidos por un único objetivo: servirte mejor.",
+    "whyTitle": "¿Por qué VENDRA?",
+    "whySubtitle": "Descubre las ventajas de usar nuestra plataforma para tu próxima aventura inmobiliaria.",
+    "why1_title": "Listados Curados",
+    "why1_text": "Contamos con una selección cuidadosamente elegida de propiedades de calidad para asegurar que estés viendo lo mejor del mercado.",
+    "why2_title": "Agentes Expertos",
+    "why2_text": "Conéctate con profesionales inmobiliarios experimentados y verificados, listos para ayudarte en cada paso.",
+    "why3_title": "Experiencia Simplificada",
+    "why3_text": "Nuestra plataforma fácil de usar hace que encontrar, comprar y vender propiedades sea más sencillo que nunca."
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "subtitle": "¿Tienes alguna pregunta o comentario? Usa el formulario a continuación para enviarnos un mensaje, o contáctanos por correo electrónico o teléfono.",
+    "form": {
+      "title": "Envíanos un Mensaje",
+      "name": "Nombre Completo",
+      "name_placeholder": "Tu Nombre",
+      "email": "Correo Electrónico",
+      "email_placeholder": "tu.email@ejemplo.com",
+      "message": "Mensaje",
+      "message_placeholder": "Escribe tu mensaje aquí...",
+      "submit": "Enviar Mensaje",
+      "validation": {
+        "name": "Por favor, introduce tu nombre.",
+        "email": "Por favor, introduce una dirección de correo válida.",
+        "message": "El mensaje debe tener al menos 10 caracteres."
+      }
+    },
+    "info": {
+      "title": "Información de Contacto",
+      "address_title": "Nuestra Oficina",
+      "address": "KM 17 Autop. Duarte",
+      "phone_title": "Teléfono",
+      "phone": "829-689-7550 (con WhatsApp)",
+      "email_title": "Correo Electrónico",
+      "email": "soporte@vendra.com"
+    },
+    "toast": {
+      "success": {
+        "title": "¡Mensaje Enviado!",
+        "description": "Gracias por contactarnos. Te responderemos en breve."
+      }
+    }
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "subtitle": "Por favor, lee estos términos y condiciones cuidadosamente antes de usar Nuestro Servicio.",
+    "lastUpdated": "Última actualización: {date}",
+    "locale_code": "es-ES",
+    "section1": {
+      "title": "1. Introducción",
+      "content": "Bienvenido a VENDRA. Estos Términos y Condiciones rigen tu uso de nuestro sitio web y servicios. Al acceder o utilizar el servicio, aceptas estar sujeto a estos Términos. Si no estás de acuerdo con alguna parte de los términos, no podrás acceder al servicio."
+    },
+    "section2": {
+      "title": "2. Cuentas de Usuario",
+      "content": "Cuando creas una cuenta con nosotros, debes proporcionarnos información que sea precisa, completa y actualizada en todo momento. No hacerlo constituye una violación de los Términos, lo que puede resultar en la terminación inmediata de tu cuenta en nuestro Servicio."
+    },
+    "section3": {
+      "title": "3. Listados de Propiedades",
+      "content": "VENDRA permite a los usuarios publicar listados de propiedades. Eres responsable de la exactitud y legalidad del contenido que publicas. Nos reservamos el derecho de eliminar cualquier listado que viole nuestras políticas o se considere inapropiado, a nuestra entera discreción."
+    },
+    "section4": {
+      "title": "4. Propiedad Intelectual",
+      "content": "El Servicio y su contenido original, características y funcionalidades son y seguirán siendo propiedad exclusiva de VENDRA y sus licenciantes. El Servicio está protegido por derechos de autor, marcas registradas y otras leyes tanto de los Estados Unidos como de otros países."
+    },
+    "section5": {
+      "title": "5. Limitación de Responsabilidad",
+      "content": "En ningún caso VENDRA, ni sus directores, empleados, socios, agentes, proveedores o afiliados, serán responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo, sin limitación, pérdida de beneficios, datos, uso, buena voluntad u otras pérdidas intangibles."
+    },
+    "section6": {
+      "title": "6. Ley Aplicable",
+      "content": "Estos Términos se regirán e interpretarán de acuerdo con las leyes del Estado de California, Estados Unidos, sin tener en cuenta sus disposiciones sobre conflicto de leyes."
+    }
+  },
+  "landing": {
+    "hero": {
+      "title": "Tu Próximo Hogar te Espera",
+      "subtitle": "El mercado principal para descubrir, comprar y vender propiedades extraordinarias. Encontremos la puerta a tus sueños.",
+      "cta_main": "Comenzar",
+      "cta_secondary": "Saber Más"
+    },
+    "featured": {
+      "title": "Listados Destacados",
+      "subtitle": "Tu próximo hogar o inversión comienza aquí. Descubre casas, solares, apartamentos y más."
+    },
+     "features": {
+        "feature1_title": "Búsqueda Avanzada",
+        "feature1_desc": "Personaliza tu búsqueda y descubre propiedades que se ajustan a ti.",
+        "feature2_title": "Listado de Propiedades a un Click",
+        "feature2_desc": "Tu próximo hogar o inversión puede estar más cerca de lo que imaginas. Conéctate con vendedores reales en segundos.",
+        "feature3_title": "Mensajería Directa",
+        "feature3_desc": "Conectamos a compradores con vendedores de forma directa y rápida"
+    },
+    "testimonials": {
+      "title": "Lo que Dicen Nuestros Clientes",
+      "subtitle": "Estamos orgullosos de haber ayudado a tantas personas a encontrar su inmueble perfecto. Esto es lo que piensan de VENDRA.",
+      "quote1": "VENDRA hizo que encontrar la casa de nuestros sueños fuera un juego de niños. ¡La plataforma es muy intuitiva y los agentes fueron increíblemente serviciales!",
+      "role1": "Compradores Felices",
+      "quote2": "Como agente, VENDRA es revolucionario. Me conecta con compradores serios y agiliza todo el proceso de venta.",
+      "role2": "Vendedora Verificada",
+      "quote3": "Estaba abrumado con el proceso de vender mi casa, pero VENDRA me dio las herramientas y el apoyo que necesitaba para obtener una gran oferta, rápidamente.",
+      "role3": "Vendedor Primerizo"
+    },
+    "cta": {
+      "title": "¿Listo para Empezar tu Viaje?",
+      "subtitle": "Crea una cuenta hoy para guardar tus propiedades favoritas, conectarte con vendedores y desbloquear todas las funciones de VENDRA.",
+      "button": "Regístrate Gratis"
+    }
+  },
+  "mock": {
+    "property1_title": "Lujosa Villa en Beverly Hills",
+    "property1_description": "Una impresionante villa que ofrece lujo y privacidad incomparables. Cuenta con una gran escalera, cocina gourmet y una piscina infinita impresionante con vistas a la ciudad. Perfecta para quienes exigen lo mejor de la vida.",
+    "property2_title": "Moderno Apartamento en el Centro de LA",
+    "property2_description": "Apartamento moderno, elegante y con estilo en el corazón del centro de LA. Ventanas de piso a techo que ofrecen increíbles vistas del horizonte. Las comodidades incluyen un salón en la azotea, gimnasio y conserje 24/7.",
+    "property3_title": "Acogedora Casa Familiar en Santa Monica",
+    "property3_description": "Encantadora casa familiar a solo unas cuadras de la playa. Esta casa cuenta con un hermoso patio trasero con jardín, una espaciosa sala de estar con chimenea y una cocina recientemente renovada. Ideal para la vida familiar.",
+    "property4_title": "Condominio Chic en West Hollywood",
+    "property4_description": "Un condominio de moda en un barrio vibrante, perfecto para un joven profesional. Diseño de concepto abierto con acabados modernos y un balcón privado. El edificio ofrece piscina, gimnasio y estacionamiento seguro.",
+    "property5_title": "Extensa Finca en Malibú",
+    "property5_description": "Una exquisita finca frente al mar con acceso privado a la playa. Esta obra maestra del diseño cuenta con vistas panorámicas al océano desde todas las habitaciones, un cine en casa de última generación y una cancha de tenis.",
+    "property6_title": "Pintoresca Casa en Pasadena",
+    "property6_description": "Una hermosa casa de estilo artesano en una calle tranquila y arbolada en Pasadena. Cuenta con carpintería original, un gran porche delantero y un patio trasero sereno perfecto para relajarse.",
+    "property7_title": "Penthouse con Vistas Panorámicas",
+    "property7_description": "Vive en la cima del mundo en este exclusivo penthouse. Ofreciendo vistas de 360 grados de la ciudad, esta residencia es el epítome del lujo urbano. Incluye un ascensor privado, terraza en la azotea y servicios premium.",
+    "property8_title": "Condominio Frente a la Playa en Santa Mónica",
+    "property8_description": "Despierta con el sonido de las olas en este lujoso condominio frente a la playa. Acceso directo a la arena, una moderna sala de estar de planta abierta y un gran balcón para disfrutar del atardecer. Una oportunidad única en una ubicación privilegiada.",
+    "user1_bio": "Agente inmobiliaria de primer nivel con más de 15 años de experiencia en el mercado de lujo. Permíteme ayudarte a encontrar la casa de tus sueños.",
+    "user2_bio": "Especializado en propiedades residenciales y comerciales del centro. Encontremos tu próxima inversión.",
+    "user3_bio": "Tu experta en bienes raíces de Santa Mónica. Vivo y respiro propiedades costeras.",
+    "user4_bio": "Conectando clientes con el vibrante estilo de vida de West Hollywood. El condominio de tus sueños te espera."
+  }
+}
