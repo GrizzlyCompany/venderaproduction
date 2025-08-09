@@ -19,8 +19,8 @@ interface SearchResults {
 function SearchComponent() {
   const { supabase } = useAuth();
   const searchParams = useSearchParams();
-  const query = searchParams.get('q') || '';
-  const category = searchParams.get('category') || 'all';
+  const query = searchParams?.get('q') || '';
+  const category = searchParams?.get('category') || 'all';
   const { t } = useTranslation();
 
   const [results, setResults] = useState<SearchResults>({ properties: [], users: [] });

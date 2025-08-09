@@ -56,16 +56,16 @@ function LoginForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const reason = searchParams.get('reason');
-    if (reason) {
-      setLogoutReason(reason);
-    }
-  }, [searchParams]);
+    useEffect(() => {
+      const reason = searchParams?.get('reason');
+      if (reason) {
+        setLogoutReason(reason);
+      }
+    }, [searchParams]);
 
   useEffect(() => {
     if (user) {
-      const redirectTo = searchParams.get('redirectTo');
+      const redirectTo = searchParams?.get('redirectTo');
       const targetUrl = redirectTo || getPostLoginRedirectUrl(user.profile, '/');
       router.push(targetUrl);
     }
@@ -124,17 +124,9 @@ function LoginForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-4">
       <div className="w-full max-w-md space-y-6">
-        {/* Logo */}
-        <div className="text-center">
-          <div className="mx-auto">
-            <Logo />
-          </div>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground">
-            {t('auth.login.title')}
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {t('auth.login.subtitle')}
-          </p>
+        {/* Logo centrado y grande */}
+        <div className="flex justify-center mb-2">
+          <Logo layout="vertical" />
         </div>
 
         {/* Logout Message */}
@@ -154,11 +146,11 @@ function LoginForm() {
         {/* Login Form */}
         <Card className="border-0 shadow-xl">
           <CardHeader className="space-y-1 pb-4">
-            <CardTitle className="text-2xl font-semibold text-center">
-              {t('auth.login.form.title')}
+            <CardTitle className="text-3xl font-bold text-center">
+              {t('login.title')}
             </CardTitle>
             <CardDescription className="text-center">
-              {t('auth.login.form.description')}
+              {t('login.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -169,11 +161,11 @@ function LoginForm() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('auth.login.form.email.label')}</FormLabel>
+                      <FormLabel>{t('login.form.email.label')}</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder={t('auth.login.form.email.placeholder')}
+                          placeholder={t('login.form.email.placeholder')}
                           disabled={isLoading}
                           {...field}
                         />
@@ -187,11 +179,11 @@ function LoginForm() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('auth.login.form.password.label')}</FormLabel>
+                      <FormLabel>{t('login.form.password.label')}</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
-                          placeholder={t('auth.login.form.password.placeholder')}
+                          placeholder={t('login.form.password.placeholder')}
                           disabled={isLoading}
                           {...field}
                         />
@@ -206,20 +198,20 @@ function LoginForm() {
                   disabled={isLoading}
                 >
                   {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  {t('auth.login.form.submit')}
+                  {t('login.form.submit')}
                 </Button>
               </form>
             </Form>
 
             <div className="mt-6 text-center text-sm">
               <span className="text-muted-foreground">
-                {t('auth.login.form.no_account')}
+                {t('login.form.no_account')}
               </span>{' '}
               <Link
                 href="/signup"
                 className="font-medium text-primary hover:text-primary/80 transition-colors"
               >
-                {t('auth.login.form.signup_link')}
+                {t('login.form.signup_link')}
               </Link>
             </div>
 
@@ -228,7 +220,7 @@ function LoginForm() {
                 href="/forgot-password"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                {t('auth.login.form.forgot_password')}
+                {t('login.form.forgot_password')}
               </Link>
             </div>
           </CardContent>
@@ -237,13 +229,13 @@ function LoginForm() {
         {/* Footer */}
         <div className="text-center text-xs text-muted-foreground">
           <p>
-            {t('auth.login.footer.terms_prefix')}{' '}
+            {t('login.footer.terms_prefix')}{' '}
             <Link href="/terms" className="underline hover:text-primary">
-              {t('auth.login.footer.terms')}
+              {t('login.footer.terms')}
             </Link>{' '}
-            {t('auth.login.footer.and')}{' '}
+            {t('login.footer.and')}{' '}
             <Link href="/privacy" className="underline hover:text-primary">
-              {t('auth.login.footer.privacy')}
+              {t('login.footer.privacy')}
             </Link>
           </p>
         </div>

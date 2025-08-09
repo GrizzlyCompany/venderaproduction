@@ -18,7 +18,7 @@ export function AutoLogoutProvider({
   warningTime = AUTH_CONFIG.WARNING_TIME,
   enabled = true
 }: AutoLogoutProviderProps) {
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
   
   // Deshabilitar auto-logout en páginas excluidas
   const shouldBeEnabled = enabled && !isPathExcluded(pathname);

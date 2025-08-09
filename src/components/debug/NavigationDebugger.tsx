@@ -13,7 +13,7 @@ interface NavigationDebuggerProps {
 }
 
 export function NavigationDebugger({ expectedPath, userId }: NavigationDebuggerProps) {
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
   const [showDebugger, setShowDebugger] = useState(false);
   const [isClearing, setIsClearing] = useState(false);
 

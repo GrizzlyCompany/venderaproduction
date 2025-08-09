@@ -14,7 +14,7 @@ interface AuthRedirectProps {
 export function AuthRedirect({ children }: AuthRedirectProps) {
   const { user, loading, clearSession } = useAuth();
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
   const [showSessionError, setShowSessionError] = useState(false);
   const [isClearing, setIsClearing] = useState(false);
   const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
@@ -58,10 +58,9 @@ export function AuthRedirect({ children }: AuthRedirectProps) {
 
     // Define public pages that don't require authentication
     const publicPages = ['/landing', '/login', '/signup', '/'];
-    const isPublicPage = publicPages.includes(pathname);
-    
-    // Profile pages are public for viewing but we need to handle them carefully
-    const isProfilePage = pathname.startsWith('/profile/');
+  const isPublicPage = publicPages.includes(pathname);
+  // Profile pages are public for viewing but we need to handle them carefully
+  const isProfilePage = pathname.startsWith('/profile/');
 
     // Don't redirect if on a public page (but not profile pages)
     if (isPublicPage) {

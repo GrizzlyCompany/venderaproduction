@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -13,70 +14,6 @@ import { useAuth } from '@/context/AuthContext';
 import type { DevelopmentProject } from '@/types';
 import { developerService } from '@/lib/developer.service';
 
-// Mock data for now - will be replaced with real API calls
-const mockProjects: DevelopmentProject[] = [
-  {
-    id: '1',
-    developer_id: 'dev1',
-    name: 'Torres del Caribe',
-    description: 'Moderno complejo residencial con vista al mar y amenidades de lujo.',
-    status: 'construction',
-    project_type: 'apartments',
-    location: 'Punta Cana, La Altagracia',
-    address: 'Av. España, Punta Cana',
-    coordinates: { lat: 18.5601, lng: -68.3725 },
-    estimated_delivery: '2025-12-01',
-    price_range_min: 180000,
-    price_range_max: 450000,
-    currency: 'USD',
-    total_units: 120,
-    available_units: 85,
-    amenities: ['Piscina', 'Gimnasio', 'Área de juegos', 'Seguridad 24/7'],
-    features: ['Balcón', 'Aire acondicionado', 'Cocina equipada'],
-    images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800'],
-    floor_plans: [],
-    brochure_url: null,
-    is_featured: true,
-    is_active: true,
-    view_count: 1247,
-    created_at: '2024-01-15T00:00:00Z',
-    updated_at: '2024-01-15T00:00:00Z',
-  },
-  {
-    id: '2',
-    developer_id: 'dev2',
-    name: 'Residencial Los Jardines',
-    description: 'Casas familiares en un entorno tranquilo y seguro.',
-    status: 'presale',
-    project_type: 'houses',
-    location: 'Santiago, Santiago',
-    address: 'Sector Los Jardines, Santiago',
-    coordinates: { lat: 19.4515, lng: -70.6970 },
-    estimated_delivery: '2025-06-01',
-    price_range_min: 120000,
-    price_range_max: 280000,
-    currency: 'USD',
-    total_units: 45,
-    available_units: 45,
-    amenities: ['Parque', 'Área de BBQ', 'Cancha deportiva'],
-    features: ['Jardín privado', 'Garaje', 'Terraza'],
-    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800'],
-    floor_plans: [],
-    brochure_url: null,
-    is_featured: false,
-    is_active: true,
-    view_count: 892,
-    created_at: '2024-02-01T00:00:00Z',
-    updated_at: '2024-02-01T00:00:00Z',
-  },
-];
-
-const statusLabels = {
-  planning: 'En Planos',
-  construction: 'En Construcción',
-  presale: 'Preventa',
-  completed: 'Completado',
-};
 
 const statusColors = {
   planning: 'bg-gray-100 text-gray-800',
@@ -85,16 +22,9 @@ const statusColors = {
   completed: 'bg-green-100 text-green-800',
 };
 
-const typeLabels = {
-  apartments: 'Apartamentos',
-  houses: 'Casas',
-  commercial: 'Comercial',
-  mixed: 'Mixto',
-  lots: 'Solares',
-};
-
 export default function ProjectsPage() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [projects, setProjects] = useState<DevelopmentProject[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<DevelopmentProject[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -121,16 +51,15 @@ export default function ProjectsPage() {
         setFilteredProjects(projectsData);
         console.log('✅ Using real project data');
       } else {
-        console.log('⚠️ No real projects found, using mock data');
-        setProjects(mockProjects);
-        setFilteredProjects(mockProjects);
+        setProjects([]);
+        setFilteredProjects([]);
+        console.log('⚠️ No real projects found.');
       }
     } catch (error) {
       console.error('❌ Error loading projects:', error);
-      // Fallback to mock data if API fails
-      console.log('🔄 Falling back to mock data');
-      setProjects(mockProjects);
-      setFilteredProjects(mockProjects);
+  // Fallback: no mostrar nada si falla la API
+  setProjects([]);
+  setFilteredProjects([]);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -275,7 +204,7 @@ export default function ProjectsPage() {
               <Badge 
                 className={`absolute top-2 right-2 text-xs ${statusColors[project.status]}`}
               >
-                {statusLabels[project.status]}
+                {t(`projects.status.${project.status}`)}
               </Badge>
             </div>
             
@@ -294,24 +223,24 @@ export default function ProjectsPage() {
               
               <div className="space-y-1.5 md:space-y-2 mb-3 md:mb-4">
                 <div className="flex items-center justify-between text-xs md:text-sm">
-                  <span className="text-gray-600">Tipo:</span>
-                  <span className="font-medium text-right">{typeLabels[project.project_type]}</span>
+                  <span className="text-gray-600">{t('projects.typeLabel')}</span>
+                  <span className="font-medium text-right">{t(`projects.type.${project.project_type}`)}</span>
                 </div>
                 <div className="flex items-center justify-between text-xs md:text-sm">
-                  <span className="text-gray-600">Precio:</span>
+                  <span className="text-gray-600">{t('projects.priceLabel')}</span>
                   <span className="font-medium text-right">
                     {formatPrice(project.price_range_min, project.price_range_max, project.currency)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-xs md:text-sm">
-                  <span className="text-gray-600">Entrega:</span>
+                  <span className="text-gray-600">{t('projects.deliveryLabel')}</span>
                   <span className="font-medium text-right">{formatDate(project.estimated_delivery)}</span>
                 </div>
                 {project.available_units && project.total_units && (
                   <div className="flex items-center justify-between text-xs md:text-sm">
-                    <span className="text-gray-600">Disponibles:</span>
+                    <span className="text-gray-600">{t('projects.availableUnits')}</span>
                     <span className="font-medium text-right">
-                      {project.available_units} de {project.total_units}
+                      {t('projects.unitsOf', { available: project.available_units, total: project.total_units })}
                     </span>
                   </div>
                 )}
@@ -319,7 +248,7 @@ export default function ProjectsPage() {
               
               <Link href={`/projects/${project.id}`}>
                 <Button className="w-full h-8 md:h-9 text-xs md:text-sm">
-                  Ver Detalles
+                  {t('projects.viewDetails')}
                 </Button>
               </Link>
             </CardContent>
@@ -331,10 +260,10 @@ export default function ProjectsPage() {
         <div className="text-center py-12">
           <Building2 className="mx-auto h-12 w-12 text-gray-400 mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">
-            No se encontraron proyectos
+            {t('projects.noResults')}
           </h3>
           <p className="text-gray-600">
-            Intenta ajustar los filtros de búsqueda
+            {t('projects.tryAdjustFilters')}
           </p>
         </div>
       )}

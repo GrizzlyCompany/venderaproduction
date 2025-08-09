@@ -31,74 +31,6 @@ import { useToast } from '@/hooks/use-toast';
 import { developerService } from '@/lib/developer.service';
 import type { DevelopmentProject } from '@/types';
 
-// Mock data - will be replaced with real API call
-const mockProject: DevelopmentProject = {
-  id: '1',
-  developer_id: 'dev1',
-  name: 'Torres del Caribe',
-  description: 'Moderno complejo residencial con vista al mar y amenidades de lujo. Este proyecto representa la perfecta combinación entre elegancia, comodidad y ubicación privilegiada en una de las zonas más exclusivas de Punta Cana.',
-  status: 'construction',
-  project_type: 'apartments',
-  location: 'Punta Cana, La Altagracia',
-  address: 'Av. España, Punta Cana',
-  coordinates: { lat: 18.5601, lng: -68.3725 },
-  estimated_delivery: '2025-12-01',
-  price_range_min: 180000,
-  price_range_max: 450000,
-  currency: 'USD',
-  total_units: 120,
-  available_units: 85,
-  amenities: [
-    'Piscina infinity',
-    'Gimnasio equipado',
-    'Área de juegos infantiles',
-    'Seguridad 24/7',
-    'Lobby elegante',
-    'Área de BBQ',
-    'Cancha de tenis',
-    'Spa y sauna'
-  ],
-  features: [
-    'Balcón con vista al mar',
-    'Aire acondicionado central',
-    'Cocina equipada con electrodomésticos',
-    'Pisos de porcelanato',
-    'Closets empotrados',
-    'Baños con acabados de lujo'
-  ],
-  images: [
-    'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800',
-    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800'
-  ],
-  floor_plans: [
-    'https://example.com/floor-plan-1.pdf',
-    'https://example.com/floor-plan-2.pdf'
-  ],
-  brochure_url: 'https://example.com/brochure.pdf',
-  is_featured: true,
-  is_active: true,
-  view_count: 1247,
-  created_at: '2024-01-15T00:00:00Z',
-  updated_at: '2024-01-15T00:00:00Z',
-  developer: {
-    id: 'dev1',
-    user_id: 'user1',
-    company_name: 'Constructora del Caribe S.A.',
-    commercial_name: 'Del Caribe',
-    rnc_id: '123456789',
-    contact_email: 'info@delcaribe.com',
-    contact_phone: '+1 809 555 0123',
-    logo_url: null,
-    description: 'Empresa líder en desarrollo inmobiliario con más de 20 años de experiencia.',
-    website: 'https://delcaribe.com',
-    is_verified: true,
-    is_active: true,
-    created_at: '2024-01-01T00:00:00Z',
-    updated_at: '2024-01-01T00:00:00Z',
-  }
-};
 
 const statusLabels = {
   planning: 'En Planos',
@@ -138,8 +70,8 @@ export default function ProjectDetailPage() {
 
   useEffect(() => {
     const loadProject = async () => {
-      if (!params.id || typeof params.id !== 'string') {
-        console.error('❌ Invalid project ID:', params.id);
+      if (!params || !params.id || typeof params.id !== 'string') {
+        console.error('❌ Invalid project ID:', params?.id);
         setLoading(false);
         return;
       }
@@ -154,21 +86,18 @@ export default function ProjectDetailPage() {
           console.log('📐 Project floor_plans:', projectData.floor_plans);
           setProject(projectData);
         } else {
-          console.log('⚠️ Project not found, using mock data as fallback');
-          setProject(mockProject);
+          setProject(null);
         }
       } catch (error) {
         console.error('❌ Error loading project:', error);
-        // Fallback to mock data if API fails
-        console.log('🔄 Falling back to mock data');
-        setProject(mockProject);
+        setProject(null);
       } finally {
         setLoading(false);
       }
     };
 
     loadProject();
-  }, [params.id]);
+  }, [params?.id]);
 
   const handleInterestSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

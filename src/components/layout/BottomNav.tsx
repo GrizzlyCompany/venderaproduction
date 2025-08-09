@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { getProfileUrl, isProfileRouteActive } from '@/lib/navigation-helpers';
 
 export function BottomNav() {
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
   const router = useRouter();
   const { t } = useTranslation();
   const { user, loading } = useAuth();

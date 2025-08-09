@@ -213,15 +213,17 @@ export default function DeveloperDashboardClient({
             {projects.map((project) => (
               <Card key={project.id} className="overflow-hidden">
                 <div className="relative">
-                  {project.images && project.images[0] && (
-                    <Image
-                      src={project.images[0]}
-                      alt={project.name}
-                      width={400}
-                      height={200}
-                      className="w-full h-32 md:h-40 object-cover"
-                    />
-                  )}
+                  <Image
+                    src={
+                      project.images && project.images[0] && typeof project.images[0] === 'string' && project.images[0].startsWith('http')
+                        ? project.images[0]
+                        : '/placeholder-property.jpg'
+                    }
+                    alt={project.name}
+                    width={400}
+                    height={200}
+                    className="w-full h-32 md:h-40 object-cover"
+                  />
                   <Badge className={`absolute top-2 right-2 text-xs ${statusColors[project.status]}`}>
                     {statusLabels[project.status]}
                   </Badge>

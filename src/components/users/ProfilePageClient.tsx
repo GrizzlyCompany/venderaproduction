@@ -72,8 +72,8 @@ export default function ProfilePageClient() {
   const { t } = useTranslation();
   const { toast } = useToast();
   const router = useRouter();
-  const params = useParams();
-  const profileId = params.id as string;
+  const params = useParams() || {};
+  const profileId = (params as Record<string, any>).id as string;
   const { favorites } = useFavoritesStore();
   
   const [displayUser, setDisplayUser] = useState<UserProfile | null>(null);

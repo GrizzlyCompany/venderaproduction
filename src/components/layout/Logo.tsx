@@ -17,7 +17,7 @@ export function Logo({ layout = 'horizontal' }: LogoProps) {
       )}
     >
       <Image
-        src="https://qlbuwoyugbwpzzwdflsq.supabase.co/storage/v1/object/public/logo//logo3.png"
+        src="https://imztgqvovygowvggagkf.supabase.co/storage/v1/object/public/logo/logo3.png"
         alt="VENDRA Logo"
         width={isVertical ? 128 : 48}
         height={isVertical ? 128 : 48}

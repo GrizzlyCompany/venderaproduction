@@ -32,7 +32,7 @@ import { SubscriptionModal } from '@/components/layout/SubscriptionModal';
 
 export default function PropertyDetailPage() {
   const params = useParams();
-  const { id } = params;
+  const id = params?.id;
   const { user, supabase } = useAuth();
   const { properties } = usePropertyStore();
   const [property, setProperty] = useState<Property | null | undefined>(undefined);

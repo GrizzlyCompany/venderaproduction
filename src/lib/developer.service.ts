@@ -1,13 +1,7 @@
-'use client';
-
+import { DeveloperProfile, DevelopmentProject, ProjectInterest } from '@/types/index';
 import { createClient } from '@/lib/supabase/client';
-import type { DeveloperProfile, DevelopmentProject, ProjectInterest } from '@/types';
 
 class DeveloperService {
-  // Lazy initialization of Supabase client
-  private get supabase() {
-    return createClient();
-  }
   // Create developer profile
   async createDeveloperProfile(userId: string, profileData: Omit<DeveloperProfile, 'id' | 'user_id' | 'created_at' | 'updated_at'>): Promise<DeveloperProfile> {
     try {
@@ -19,7 +13,6 @@ class DeveloperService {
         })
         .select()
         .single();
-
       if (error) throw error;
       return data;
     } catch (error) {
@@ -27,8 +20,32 @@ class DeveloperService {
       throw error;
     }
   }
+  // Lazy initialization of Supabase client
+  private get supabase() {
+    return createClient();
+  }
 
-  // Get developer profile by user ID
+  // Update developer profile by user_id
+  async updateDeveloperProfileByUserId(userId: string, updates: Partial<DeveloperProfile>): Promise<DeveloperProfile> {
+    try {
+      const { data, error } = await this.supabase
+        .from('developer_profiles')
+        .update({
+          ...updates,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('user_id', userId)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error updating developer profile by user_id:', error);
+      throw error;
+    }
+  }
+
+  // Upload generic file (for documents, floor plans, brochures)
   async getDeveloperProfile(userId: string): Promise<DeveloperProfile | null> {
     try {
       const { data, error } = await this.supabase
@@ -279,10 +296,7 @@ class DeveloperService {
     try {
       const { data, error } = await this.supabase
         .from('project_interests')
-        .select(`
-          *,
-          user:user_id(full_name, email, phone_number)
-        `)
+        .select('*')
         .eq('project_id', projectId)
         .order('created_at', { ascending: false });
 
@@ -314,11 +328,7 @@ class DeveloperService {
       // Then get interests for those projects
       const { data, error } = await this.supabase
         .from('project_interests')
-        .select(`
-          *,
-          user:user_id(full_name, email, phone_number),
-          project:project_id(name)
-        `)
+        .select('*')
         .in('project_id', projectIds)
         .order('created_at', { ascending: false });
 
@@ -353,81 +363,64 @@ class DeveloperService {
 
   // Upload project images
   async uploadProjectImage(projectId: string, file: File): Promise<string> {
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const { uploadFile } = await import('@/app/actions');
-      const result = await uploadFile('project_images', projectId, formData);
-
-      if ('error' in result) {
-        throw new Error(result.error);
-      }
-      return result.publicUrl;
-    } catch (error) {
-      console.error('Error uploading project image:', error);
-      throw error;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('userId', projectId);
+    formData.append('bucket', 'project_images');
+    const res = await fetch('/api/upload-developer-file-edge', {
+      method: 'POST',
+      body: formData,
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) {
+      throw new Error(result.error || 'Error uploading project image');
     }
+    return result.publicUrl;
   }
 
   // Upload developer logo
   async uploadDeveloperLogo(developerId: string, file: File): Promise<string> {
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const { uploadFile } = await import('@/app/actions');
-      const result = await uploadFile('developer_logos', developerId, formData);
-
-      if ('error' in result) {
-        throw new Error(result.error);
-      }
-      return result.publicUrl;
-    } catch (error) {
-      console.error('Error uploading developer logo:', error);
-      throw error;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('userId', developerId);
+    formData.append('bucket', 'developer_logos');
+    const res = await fetch('/api/upload-developer-file-edge', {
+      method: 'POST',
+      body: formData,
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) {
+      throw new Error(result.error || 'Error uploading developer logo');
     }
+    return result.publicUrl;
   }
 
   // Upload generic file (for documents, floor plans, brochures)
   async uploadFile(file: File, bucket: string = 'documents'): Promise<string> {
-    try {
-      console.log('🔄 Uploading file:', file.name, 'type:', file.type, 'to bucket:', bucket);
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const { uploadFile } = await import('@/app/actions');
-      
-      // Determine the correct bucket based on file type
-      let targetBucket: string;
-      const isPDF = file.type === 'application/pdf';
-      const isImage = file.type.startsWith('image/');
-      
-      if (isPDF) {
-        // For PDF files, use documents bucket
-        targetBucket = 'documents';
-        console.log('📄 PDF detected, using documents bucket');
-      } else if (isImage) {
-        // For images, use project_images bucket for project images, documents for document images
-        targetBucket = bucket === 'documents' ? 'documents' : 'project_images';
-        console.log(`🖼️ Image detected, using ${targetBucket} bucket`);
-      } else {
-        throw new Error(`Unsupported file type: ${file.type}. Only PDF and image files are supported.`);
-      }
-      
-      const result = await uploadFile(targetBucket as any, 'documents', formData);
-
-      if ('error' in result) {
-        console.error('❌ Upload error:', result.error);
-        throw new Error(result.error);
-      }
-      
-      console.log('✅ File uploaded successfully:', result.publicUrl);
-      return result.publicUrl;
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      throw error;
+    // Decide bucket según tipo de archivo
+    let targetBucket: string;
+    const isPDF = file.type === 'application/pdf';
+    const isImage = file.type.startsWith('image/');
+    if (isPDF) {
+      targetBucket = 'documents';
+    } else if (isImage) {
+      targetBucket = bucket === 'documents' ? 'documents' : 'project_images';
+    } else {
+      throw new Error(`Unsupported file type: ${file.type}. Only PDF and image files are supported.`);
     }
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('userId', 'documents');
+    formData.append('bucket', targetBucket);
+    const res = await fetch('/api/upload-developer-file-edge', {
+      method: 'POST',
+      body: formData,
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) {
+      throw new Error(result.error || 'Error uploading file');
+    }
+    return result.publicUrl;
   }
 }
 

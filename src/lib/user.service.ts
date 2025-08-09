@@ -107,13 +107,16 @@ class UserService {
   async uploadAvatar(userId: string, file: File): Promise<string> {
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('userId', userId);
 
-    // Delegate the upload to a secure Server Action
-    const { uploadFile } = await import('@/app/actions');
-    const result = await uploadFile('avatars', userId, formData);
-
-    if ('error' in result) {
-      throw new Error(result.error);
+    // Llama al endpoint API (edge)
+    const res = await fetch('/api/upload-avatar-edge', {
+      method: 'POST',
+      body: formData,
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) {
+      throw new Error(result.error || 'Error uploading avatar');
     }
     return result.publicUrl;
   }

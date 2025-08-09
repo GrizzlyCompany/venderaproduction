@@ -49,8 +49,10 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
+
   // Get user profile to check role
   try {
+    // Primero obtenemos el perfil general
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
@@ -58,6 +60,27 @@ export async function middleware(req: NextRequest) {
       .single();
 
     const userRole = profile?.role;
+
+    // Si es developer, verificamos si tiene perfil de empresa
+    if (userRole === 'developer') {
+      // Evitar bucle infinito en /developer/register y /developer/completar-perfil
+      if (!pathname.startsWith('/developer/register') && !pathname.startsWith('/developer/completar-perfil')) {
+        // Buscar perfil de empresa
+        const { data: devProfile } = await supabase
+          .from('developer_profiles')
+          .select('company_name, contact_email, contact_phone')
+          .eq('user_id', session.user.id)
+          .maybeSingle();
+        if (!devProfile) {
+          // Redirigir a registro de empresa
+          return NextResponse.redirect(new URL('/developer/register', req.url));
+        }
+        // Si el perfil está incompleto, redirigir a completar-perfil
+        if (!devProfile.company_name || !devProfile.contact_email || !devProfile.contact_phone) {
+          return NextResponse.redirect(new URL('/developer/completar-perfil', req.url));
+        }
+      }
+    }
 
     // Check developer routes
     if (developerRoutes.some(route => pathname.startsWith(route))) {
@@ -71,6 +94,7 @@ export async function middleware(req: NextRequest) {
       if (userRole !== 'agent') {
         return NextResponse.redirect(new URL('/', req.url));
       }
+      // Aquí podrías validar si el agente tiene perfil completo (futuro)
     }
 
     // Redirect developers to their dashboard if they try to access general routes
