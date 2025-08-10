@@ -292,12 +292,12 @@ export default function SignupPage() {
             </Card>
         </div>
       </div>
-       <div className="hidden bg-muted lg:block">
+      <div className="hidden bg-muted lg:block">
         <Image
-          src="https://qlbuwoyugbwpzzwdflsq.supabase.co/storage/v1/object/public/logo//bailey-anselme-Bkp3gLygyeA-unsplash.jpg"
-          alt="Image"
-          width="1920"
-          height="1080"
+          src="https://imztgqvovygowvggagkf.supabase.co/storage/v1/object/public/logo/bailey-anselme-Bkp3gLygyeA-unsplash.jpg"
+          alt="Signup background"
+          width={1920}
+          height={1080}
           className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
           data-ai-hint="modern kitchen"
           onError={(e) => {
