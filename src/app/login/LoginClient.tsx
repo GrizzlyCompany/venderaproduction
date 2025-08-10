@@ -75,12 +75,35 @@ function LoginForm() {
     setIsLoading(true);
     try {
       await login(values.email, values.password);
-      
+
+      // Llamada a la Edge Function de Supabase como ejemplo de integración
+      try {
+        const res = await fetch('https://imztgvovyvowgvggagkf.supabase.co/functions/v1/smart-service', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Si tienes el JWT del usuario, inclúyelo aquí:
+            // 'Authorization': `Bearer ${user?.access_token}`
+          },
+          body: JSON.stringify({ name: 'Functions' }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Edge Function error');
+        // Puedes mostrar el resultado si lo deseas:
+        // toast({ title: 'Edge Function', description: JSON.stringify(data) });
+      } catch (edgeError: any) {
+        console.error('Edge Function error:', edgeError);
+        toast({
+          title: 'Edge Function error',
+          description: edgeError.message,
+          variant: 'destructive',
+        });
+      }
+
       toast({
         title: t('auth.login.success.title'),
         description: t('auth.login.success.description'),
       });
-
       // La redirección se maneja en el useEffect cuando el usuario se actualiza
     } catch (error: any) {
       console.error('Login error:', error);
