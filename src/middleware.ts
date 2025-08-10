@@ -1,117 +1,46 @@
+
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-  const supabase = createMiddlewareClient({ req, res });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+// Rutas públicas que no requieren autenticación
+const publicRoutes = [
+  '/',
+  '/login',
+  '/signup',
+  '/landing',
+  '/projects',
+  '/properties',
+  '/contact',
+  '/_next/',
+  '/api/',
+  '/profile/',
+];
 
-  // Public routes that don't require authentication
-  const publicRoutes = [
-    '/',
-    '/login',
-    '/signup',
-    '/landing',
-    '/projects',
-    '/properties',
-    '/contact',
-  ];
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
-  // Developer-only routes
-  const developerRoutes = [
-    '/developer/dashboard',
-    '/developer/projects',
-    '/developer/profile',
-  ];
-
-  // Agent-only routes
-  const agentRoutes = [
-    '/agent/dashboard',
-    '/agent/properties',
-    '/agent/profile',
-  ];
-
-  const { pathname } = req.nextUrl;
-
-  // Allow public routes
-  if (publicRoutes.some(route => pathname === route || pathname.startsWith(route + '/'))) {
-    return res;
+  // Permitir archivos estáticos y rutas públicas
+  if (
+    publicRoutes.some(route => pathname === route || pathname.startsWith(route)) ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next();
   }
 
-  // Redirect to login if not authenticated
-  if (!session) {
-    const redirectUrl = new URL('/login', req.url);
+  // Verificar si existe la cookie de sesión de Supabase
+  const hasSession = Boolean(request.cookies.get('sb-access-token') || request.cookies.get('supabase-auth-token'));
+
+  // Si no hay sesión, redirigir a login
+  if (!hasSession) {
+    const redirectUrl = new URL('/login', request.url);
     redirectUrl.searchParams.set('redirect', pathname);
     return NextResponse.redirect(redirectUrl);
   }
 
-
-  // Get user profile to check role
-  try {
-    // Primero obtenemos el perfil general
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', session.user.id)
-      .single();
-
-    const userRole = profile?.role;
-
-    // Si es developer, verificamos si tiene perfil de empresa
-    if (userRole === 'developer') {
-      // Evitar bucle infinito en /developer/register y /developer/completar-perfil
-      if (!pathname.startsWith('/developer/register') && !pathname.startsWith('/developer/completar-perfil')) {
-        // Buscar perfil de empresa
-        const { data: devProfile } = await supabase
-          .from('developer_profiles')
-          .select('company_name, contact_email, contact_phone')
-          .eq('user_id', session.user.id)
-          .maybeSingle();
-        if (!devProfile) {
-          // Redirigir a registro de empresa
-          return NextResponse.redirect(new URL('/developer/register', req.url));
-        }
-        // Si el perfil está incompleto, redirigir a completar-perfil
-        if (!devProfile.company_name || !devProfile.contact_email || !devProfile.contact_phone) {
-          return NextResponse.redirect(new URL('/developer/completar-perfil', req.url));
-        }
-      }
-    }
-
-    // Check developer routes
-    if (developerRoutes.some(route => pathname.startsWith(route))) {
-      if (userRole !== 'developer') {
-        return NextResponse.redirect(new URL('/', req.url));
-      }
-    }
-
-    // Check agent routes
-    if (agentRoutes.some(route => pathname.startsWith(route))) {
-      if (userRole !== 'agent') {
-        return NextResponse.redirect(new URL('/', req.url));
-      }
-      // Aquí podrías validar si el agente tiene perfil completo (futuro)
-    }
-
-    // Redirect developers to their dashboard if they try to access general routes
-    if (userRole === 'developer' && pathname === '/') {
-      return NextResponse.redirect(new URL('/developer/dashboard', req.url));
-    }
-
-    // Redirect agents to their dashboard if they try to access general routes
-    if (userRole === 'agent' && pathname === '/') {
-      return NextResponse.redirect(new URL('/agent/dashboard', req.url));
-    }
-
-  } catch (error) {
-    console.error('Error checking user role:', error);
-  }
-
-  return res;
+  // Si hay sesión, permitir acceso
+  return NextResponse.next();
 }
 
 export const config = {
